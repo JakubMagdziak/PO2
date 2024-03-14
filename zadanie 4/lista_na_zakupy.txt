@@ -1,0 +1,9 @@
+.Motoryzacja
+-Uchwyt na telefon
+.Chemia
+-Mydło
+.Spożywcze
+-Masło
+-Ketchup
+-Banan
+-Chleb

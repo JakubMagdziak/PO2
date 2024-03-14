@@ -1,0 +1,29 @@
+.Spożywcze
+-Chleb
+-Masło
+-Mleko
+-Żółty ser
+-Ketchup
+-Pomidory
+-Jabłka
+-Banan
+-Chrzan
+.Chemia
+-Mydło
+-Płyn do mycia
+-Ręcznik papierowy
+.Elektronika
+-Smartfon
+-Laptop
+-Ładowarka
+-Telewizor 55"
+-Telewizor 65"
+-Antena TV
+.Motoryzacja
+-Odświeżacz powietrza
+-Płyn do spryskiwaczy
+-Uchwyt na telefon
+.Przybory szkolne
+-Ołówki
+-Długopisy
+-Zeszyty
