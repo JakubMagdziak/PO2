@@ -14,7 +14,6 @@ class Product {
         return category + ": " + name;
     }
 }
-
 public class ShoppingListManager {
     private static final String FILENAME = "shopping_list.txt";
     private static List<Product> shoppingList = new ArrayList<>();
@@ -23,7 +22,6 @@ public class ShoppingListManager {
     public static void main(String[] args) {
         System.out.println("Aktualny katalog roboczy: " + System.getProperty("user.dir"));
         loadShoppingList();
-
 
         Scanner scanner = new Scanner(System.in);
 

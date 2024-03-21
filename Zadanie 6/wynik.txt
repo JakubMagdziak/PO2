@@ -1,0 +1,2 @@
+Wynik dodawania wektorów:
+11 14 17 20 
