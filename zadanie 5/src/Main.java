@@ -1,3 +1,5 @@
+import com.sun.source.tree.Tree;
+
 import java.util.*;
 
 class NrTelefoniczny implements Comparable<NrTelefoniczny> {
@@ -72,20 +74,10 @@ class Firma extends Wpis {
     }
 }
 
+
+
 public class Main {
-    public static void main(String[] args) {
-        TreeMap<NrTelefoniczny, Wpis> ksiazkaTelefoniczna = new TreeMap<>();
-
-        ksiazkaTelefoniczna.put(new NrTelefoniczny("48", "123456789"), new Osoba("Jan", "Kowalski", "ul. Prosta 1", new NrTelefoniczny("48", "123456789")));
-        ksiazkaTelefoniczna.put(new NrTelefoniczny("48", "987654321"), new Osoba("Anna", "Nowak", "ul. Kwiatowa 2", new NrTelefoniczny("48", "987654321")));
-        ksiazkaTelefoniczna.put(new NrTelefoniczny("48", "555666777"), new Firma("ABC Sp. z o.o.", "ul. Prosta 1", new NrTelefoniczny("48", "555666777")));
-        ksiazkaTelefoniczna.put(new NrTelefoniczny("48", "333444555"), new Firma("XYZ Sp. z o.o.", "ul. Jasna 3", new NrTelefoniczny("48", "333444555")));
-
-        System.out.println("Książka telefoniczna:");
-        for (Map.Entry<NrTelefoniczny, Wpis> entry : ksiazkaTelefoniczna.entrySet()) {
-            entry.getValue().opis();
-        }
-
+    public static void removeIdenticAdress(TreeMap<NrTelefoniczny,Wpis> ksiazkaTelefoniczna){
         Iterator<Map.Entry<NrTelefoniczny, Wpis>> iterator = ksiazkaTelefoniczna.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<NrTelefoniczny, Wpis> entry = iterator.next();
@@ -106,6 +98,21 @@ public class Main {
                 }
             }
         }
+    }
+    public static void main(String[] args) {
+        TreeMap<NrTelefoniczny, Wpis> ksiazkaTelefoniczna = new TreeMap<>();
+
+        ksiazkaTelefoniczna.put(new NrTelefoniczny("48", "123456789"), new Osoba("Jan", "Kowalski", "ul. Prosta 1", new NrTelefoniczny("48", "123456789")));
+        ksiazkaTelefoniczna.put(new NrTelefoniczny("48", "987654321"), new Osoba("Anna", "Nowak", "ul. Kwiatowa 2", new NrTelefoniczny("48", "987654321")));
+        ksiazkaTelefoniczna.put(new NrTelefoniczny("48", "555666777"), new Firma("ABC Sp. z o.o.", "ul. Prosta 1", new NrTelefoniczny("48", "555666777")));
+        ksiazkaTelefoniczna.put(new NrTelefoniczny("48", "333444555"), new Firma("XYZ Sp. z o.o.", "ul. Jasna 3", new NrTelefoniczny("48", "333444555")));
+
+        System.out.println("Książka telefoniczna:");
+        for (Map.Entry<NrTelefoniczny, Wpis> entry : ksiazkaTelefoniczna.entrySet()) {
+            entry.getValue().opis();
+        }
+
+        removeIdenticAdress(ksiazkaTelefoniczna);
 
         System.out.println("\nKsiążka telefoniczna po eliminacji wpisów z identyczną nazwą ulicy:");
         for (Map.Entry<NrTelefoniczny, Wpis> entry : ksiazkaTelefoniczna.entrySet()) {
