@@ -4,27 +4,38 @@ import java.net.*;
 public class Client {
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("localhost", 12345);
+            Socket socket = new Socket("127.0.0.1", 12345);
             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
 
             BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
 
-            System.out.print("Podaj treść notyfikacji: ");
-            String notification = userInput.readLine();
-            System.out.print("Podaj czas odesłania notyfikacji (HH:MM): ");
-            String time = userInput.readLine();
+            while (true) {
+                System.out.print("Podaj treść notyfikacji (wpisz 'quit' aby wyjść): ");
+                String notification = userInput.readLine();
 
-            // Walidacja czasu odesłania notyfikacji
-            if (!time.matches("^([01]?[0-9]|2[0-3]):[0-5][0-9]$")) {
-                throw new IllegalArgumentException("Nieprawidłowy format czasu. Wprowadź w formacie HH:MM.");
+                if ("quit".equalsIgnoreCase(notification)) {
+                    break; // Wyjście z pętli w przypadku wpisania "quit"
+                }
+
+                String time;
+                while(true){
+                    System.out.print("Podaj czas odesłania notyfikacji do użytkownika (HH:MM): ");
+                    time = userInput.readLine();
+                    if (!time.matches("^([01]?[0-9]|2[0-3]):[0-5][0-9]$")) {
+                        System.out.println("Nieprawidłowy format czasu. Wprowadź w formacie HH:MM.");
+                        continue;
+                    }
+                    break;
+                }
+
+
+                output.println(notification);
+                output.println(time);
+
+                String receivedNotification = input.readLine();
+                System.out.println("Otrzymana notyfikacja: " + receivedNotification);
             }
-
-            output.println(notification);
-            output.println(time);
-
-            String receivedNotification = input.readLine();
-            System.out.println("Otrzymana notyfikacja: " + receivedNotification);
 
             socket.close();
         } catch (IOException e) {

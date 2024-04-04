@@ -38,20 +38,12 @@ class ClientHandler implements Runnable {
 
             System.out.println("Otrzymano notyfikację: " + notification + ", czas: " + time);
 
-            // Symulacja oczekiwania do czasu wysłania notyfikacji
-            Thread.sleep(calculateDelay(time));
 
             output.println("Wysłano notyfikację: " + notification);
 
             clientSocket.close();
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
             System.err.println("Błąd podczas obsługi klienta: " + e.getMessage());
         }
-    }
-
-    private long calculateDelay(String time) {
-        // Obliczanie czasu do opóźnienia
-        // Tutaj możesz zaimplementować własny sposób obliczania opóźnienia
-        return 0;
     }
 }

@@ -1,5 +1,3 @@
-import com.sun.source.tree.Tree;
-
 import java.util.*;
 
 class NrTelefoniczny implements Comparable<NrTelefoniczny> {
